@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="~{fragments/header.html :: header}"></div>
+
+<div class="container">
+    <a  th:href="@{/todo/form}" class="btn btn-primary my-4">Add Todo</a>
+
+    <table class="table table-bordered table-striped table-dark text-center">
+        <thead>
+        <tr>
+            <th> Titre</th>
+            <th> Description</th>
+            <th> Date </th>
+            <th> Etat</th>
+            <th> Operation </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="todo : ${todo}" >
+            <td th:text="${todo.titre}"></td>
+            <td th:text="${todo.description}"></td>
+            <td th:text="${#dates.format(todo.date,'dd-MMM-yyyy')}"></td>
+            <td><a  th:href="@{/todo/state/{id}(id=${todo.id})}" class="btn btn-primary mx-2" th:text="${todo.etat}? 'Done' : 'Doing'" th:class="${todo.etat == true} ? 'btn-success' : 'btn-danger'"></a></td>
+            <td ><a th:href="@{/todo/edit/{id}(id=${todo.id})}" class="btn btn-primary mx-2">edit</a><a class="btn btn-danger mx-2" th:href="@{/todo/delete/{id}(id=${todo.id})}">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <form th:action="@{/todo/display}" method="post">
+        <div>
+            <select name="color">
+                <option value="all">All Todo</option>
+                <option value="done">Todo Done</option>
+                <option value="doing">Todo Doing</option>
+            </select>
+        </div>
+    </form>
+
+</div>
+
+
+</body>
+</html>
