@@ -13,5 +13,8 @@ public interface ITodoService {
     Todo findById(int id);
 
     List<Todo> findAll();
+    List<Todo> findAllTodoDone();
+    List<Todo> findAllTodoDoing();
+    List<Todo> findAllTodoUrgent();
 
 }

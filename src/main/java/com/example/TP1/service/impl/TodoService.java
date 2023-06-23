@@ -60,4 +60,23 @@ public class TodoService implements ITodoService {
             return  todoQuery.list();
 
     }
+    @Override
+    public List<Todo> findAllTodoDone() {
+        Query<Todo> todoQuery = session.createQuery("from Todo where etat = true");
+        return  todoQuery.list();
+
+    }
+
+    @Override
+    public List<Todo> findAllTodoDoing() {
+        Query<Todo> todoQuery = session.createQuery("from Todo where etat = false");
+        return  todoQuery.list();
+
+    }
+
+    @Override
+    public List<Todo> findAllTodoUrgent() {
+        Query<Todo> todoQuery = session.createQuery("from Todo where urgent = true");
+        return  todoQuery.list();
+    }
 }

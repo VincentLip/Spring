@@ -20,5 +20,6 @@ public class Todo {
     @Column(name="date")
     private Date date;
     private boolean etat = false;
+    private boolean urgent = false;
 
 }
