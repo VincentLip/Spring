@@ -31,15 +31,13 @@
       <input type="date" class="form-control" id="date" th:field="*{date}"
              th:attr="value=${#dates.format(todo.date, 'yyyy-MM-dd')}">
     </div>
-      <input type="hidden" th:field="*{etat}" class="form-control" id="etat" >
-      <input type="hidden" th:field="*{id}" class="form-control" id="id" >
-      <button type="submit" class="btn btn-primary">Validation</button>
+    <div>
+      <input type="file" name="image"/>
     </div>
-
+      <input type="hidden" th:field="*{etat}" class="form-control" id="etat"/>
+      <input type="hidden" th:field="*{id}" class="form-control" id="id" />
+      <button type="submit" class="btn btn-primary">Validation</button>
   </form>
-
 </div>
-
-
 </body>
 </html>
